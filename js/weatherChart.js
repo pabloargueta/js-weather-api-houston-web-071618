@@ -1,9 +1,14 @@
 function getFahrenheit(result){
-  // Your code goes here
+  return result.hourly.data.map (
+    function(item) {
+       return (item.temperature);
+  })
 }
 
 function getHour(result){
-  // Your code goes here
+    return result.hourly.data.map ( function(item) {
+      return new Date(item.time * 1000).getHours();
+    })
 }
 
 function generateDataSet(labels, data) {
@@ -27,8 +32,22 @@ function generateDataSet(labels, data) {
 }
 
 function makeRequest(endpoint, canvas) {
-  // Your code goes here
+  //Get the weather data using a [fetch request](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
-  // After your fetch works - use your json data with the line below :)
-  // const tempChart = new Chart(canvas, generateDataSet(getHour(hourlyData), getFahrenheit(hourlyData)))
+  return fetch(endpoint)
+    .then( res => res.json() )
+    .then( hourlyData => {
+      console.log(hourlyData);
+
+      let hours = getHour(hourlyData);
+      let temp = getFahrenheit(hourlyData);
+      let dataset = generateDataSet(hours, temp);
+
+
+
+      const tempChart = new Chart(canvas, dataset);
+    })
+
+//   // After your fetch works - use your json data with the line below :)
+//    const tempChart = new Chart(canvas, generateDataSet(getHour(hourlyData), getFahrenheit(hourlyData)))
 }

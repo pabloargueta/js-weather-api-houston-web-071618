@@ -26,6 +26,7 @@ myDate.getHours()
 ==> 16
 ```
 
+
 * Chart.JS example to create a chart
 ```
 var ctx = document.getElementById('myChart').getContext('2d');
