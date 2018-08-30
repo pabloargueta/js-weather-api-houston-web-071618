@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // make your fetch in the makeRequest function in weatherChart.js
   makeRequest(URL, ctx)
 
+  //add a form to make map location dynamic
+
 });
-// 
+//
 // ((result.hourly.data[0].time)*1000);
 //
 // result.hourly.data.map do |obj|

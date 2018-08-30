@@ -5,6 +5,18 @@ function getFahrenheit(result){
   })
 }
 
+function map(array, callback) {
+  const newArray = []
+  for (const item of array) {
+    newArray.push(callback(item))
+  }
+  return newArray
+}
+let dataArray = result.hourly.data
+map(dataArray, function(item) {
+  return item.temperature
+})
+
 function getHour(result){
     return result.hourly.data.map ( function(item) {
       return new Date(item.time * 1000).getHours();
